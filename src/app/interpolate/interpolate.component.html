@@ -1,0 +1,48 @@
+<p>
+  {{getFullName()}}
+  <br/>
+  Optional: {{formationJS?.name}}
+</p>
+<p [ngClass]="colorSwitch">COLOR SWITCH</p>
+<button (click)="handleClick()">Hide & Seek !</button>
+<p [hidden]="isHidden" (mouseover)="mouseOver()" (mouseout)="mouseOut()">HEY !</p>
+
+<div>
+  <input type="text"
+  #customVariable
+  placeholder="Saisir une valeur">
+  <div>test variable locale : {{customVariable.value}}</div>
+</div>
+<div>
+  <button (click)="customVariable.focus()">Focus the input</button>
+</div>
+
+<div  *ngIf="isDisplay">
+  <p>
+    Formation: {{formation.name}}
+    {{formation.description}}
+  </p>
+</div>
+<div>
+  <button (click)="displayFormation()">Formation</button>
+</div>
+
+<div [ngSwitch]="formationList.length">
+    <p *ngSwitchCase="0">Aucune formation disponibles</p>
+    <p *ngSwitchCase="1">Une formation disponible : </p>
+    <p *ngSwitchDefault>Formations disponibles :</p>
+</div>
+  
+<div>
+  <ul>
+    <li *ngFor="let formation of formationList; index as i; first as f; last as l; even as e">
+      <app-formation-list
+        [formation]="formation" 
+        [isFirst] = "f"
+        [isLast] = "l"
+        [isEven] = "e"
+        (formationSelected)="handleFormationSelected($event)"
+      ></app-formation-list>
+    </li>
+  </ul>
+</div>

@@ -1,0 +1,6 @@
+<div>
+  <h4 (click)="selectFormation()">{{formation.name | titlecase}}</h4>
+  <p>{{formation.description}}</p>
+  <p>{{formation.price | currency:'EUR' }}</p>
+  <p>{{ formation.startDate | date:'dd/MM/yyyy' }} to {{formation.endDate | date:'dd/MM/yyyy' }}</p>
+</div>

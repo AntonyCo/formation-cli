@@ -1,0 +1,9 @@
+export class Formation{
+    constructor(
+        public name:string,
+        public description:string,
+        public price:number,
+        public startDate:Date,
+        public endDate:Date
+    ){};    
+}
